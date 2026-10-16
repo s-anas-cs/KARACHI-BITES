@@ -1,14 +1,20 @@
 {
   "name": "karachi-restaurant-reviews",
-  "version": "1.0.0",
-  "description": "A full-stack restaurant reviews website for Karachi",
+  "version": "1.1.0",
+  "description": "KarachiBites restaurant discovery and reviews app using Express and PostgreSQL",
   "main": "server.js",
-  "scripts": { "start": "node server.js", "dev": "node --watch server.js" },
-  "engines": { "node": ">=18" },
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "check": "node --check server.js"
+  },
+  "engines": { "node": ">=20" },
   "dependencies": {
     "bcryptjs": "^2.4.3",
-    "better-sqlite3": "^11.8.1",
+    "connect-pg-simple": "^10.0.0",
+    "dotenv": "^16.6.1",
     "express": "^4.21.2",
-    "express-session": "^1.18.1"
+    "express-session": "^1.18.1",
+    "pg": "^8.16.3"
   }
 }

@@ -1,40 +1,46 @@
 # KarachiBites — Restaurant Reviews
 
-A full-stack restaurant discovery and review app for Karachi, built with Node.js, Express, SQLite, and vanilla HTML/CSS/JavaScript.
+A full-stack restaurant discovery and review app for Karachi, built with Node.js, Express, PostgreSQL, and vanilla HTML/CSS/JavaScript.
 
 ## Features
 - Search by restaurant, cuisine, and area
-- Cuisine chips and sorting (top rated, most reviewed, name)
-- User registration and login; passwords are hashed with bcrypt
+- Cuisine filters and sorting (top rated, most reviewed, name)
+- User registration and login with bcrypt password hashing
 - Add or update one review per restaurant per account
 - Delete your own review
-- Restaurant ratings and review counts update automatically
-- SQLite database is created and seeded automatically on first run
+- PostgreSQL-backed restaurants, users, reviews, and persistent login sessions
 - Responsive desktop/mobile layout
 
 ## Requirements
-- Node.js 18 or newer
-- Internet connection for initial npm install and remote Unsplash images / Google Fonts
+- Node.js 20 or newer
+- A PostgreSQL database (Neon works well with Vercel)
 
 ## Run locally
-1. Extract this ZIP.
-2. Open a terminal in the project folder.
-3. Run `npm install`
-4. Run `npm start`
+1. Create a PostgreSQL database and copy its connection string.
+2. Create a `.env` file in the project root with:
+
+   ```env
+   DATABASE_URL=postgresql://USER:PASSWORD@HOST/DATABASE?sslmode=require
+   SESSION_SECRET=replace-with-a-long-random-secret
+   NODE_ENV=development
+   ```
+
+3. Install packages: `npm install`
+4. Start the app: `npm start`
 5. Open `http://localhost:3000`
 
-The SQLite database (`restaurant-reviews.sqlite`) is created in the project directory after the server starts.
+The tables and sample restaurant entries are created automatically at first request. The sample restaurant directory is starter content; verify listing details before treating them as official.
 
-## Important before deployment
-- Set a strong `SESSION_SECRET` environment variable.
-- Use HTTPS and `NODE_ENV=production`.
-- The default Express MemoryStore is for local development only; use a persistent session store for deployment.
-- Add rate limiting, CSRF protection, input moderation/reporting, and backups before public launch.
-- Seeded restaurant names are example directory entries; confirm details and get permission before presenting them as verified listings.
-- Images are remote Unsplash URLs and require an internet connection.
-- This starter app does not include password reset, email verification, restaurant owner accounts, or image uploads.
+## Deploy to Vercel
+1. Push this project to GitHub.
+2. Import the repository at https://vercel.com/new.
+3. In Vercel Project Settings → Environment Variables, add `DATABASE_URL` (the Neon pooled connection string) and `SESSION_SECRET` (a long random secret). Select Production, Preview, and Development as needed.
+4. Redeploy after adding variables.
+5. Test `/api/restaurants`, registration, login, add/edit review, logout, and login again.
 
-## Environment variables
-- `PORT` (optional, default `3000`)
-- `SESSION_SECRET` (required for deployment; a fallback is included for local development)
-- `NODE_ENV=production` to enable secure cookies (requires HTTPS)
+Vercel automatically detects the Express app. No custom build command or output directory is normally needed.
+
+## Notes
+- Never commit `.env` or publish your database connection string.
+- A change to Vercel environment variables only applies to new deployments.
+- This starter does not include password reset, email verification, restaurant-owner accounts, image uploads, or moderation tools.
