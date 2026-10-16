@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#087f5b">
+  <meta name="description" content="Discover Karachi restaurants and share honest reviews.">
+  <title>KarachiBites — Restaurant Reviews</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="/"><span class="brand-mark">K</span><span>Karachi<span class="brand-light">Bites</span></span></a>
+  <nav><a class="nav-link active" href="#discover">Discover</a><a class="nav-link" href="#how">How it works</a></nav>
+  <div class="auth-actions"><span id="welcome" class="welcome"></span><button id="loginBtn" class="btn btn-ghost">Log in</button><button id="signupBtn" class="btn btn-green">Join free</button><button id="logoutBtn" class="btn btn-ghost hidden">Log out</button></div>
+</header>
+<main>
+  <section class="hero">
+    <div class="hero-shade"></div>
+    <div class="hero-content">
+      <div class="eyebrow"><span></span> MADE FOR KARACHI FOOD LOVERS</div>
+      <h1>Find your next<br><em>favourite bite.</em></h1>
+      <p>Honest reviews from people who know the city, one plate at a time.</p>
+      <form id="searchForm" class="search-panel">
+        <label class="search-field"><span>⌕</span><input id="searchInput" placeholder="Restaurant, cuisine or area..." aria-label="Search restaurants"></label>
+        <label class="select-field"><span>⌖</span><select id="areaSelect" aria-label="Choose area"><option value="">All Karachi</option><option>Clifton</option><option>DHA</option><option>Do Darya</option><option>Gulshan-e-Iqbal</option><option>Saddar</option><option>Shaheed-e-Millat</option></select></label>
+        <button class="btn btn-green search-btn" type="submit">Explore places <span>↗</span></button>
+      </form>
+      <div class="hero-note"><span>✦</span> Local finds. Real opinions. Better plans.</div>
+    </div>
+    <div class="hero-caption">KARACHI, PAKISTAN · FOOD & COMMUNITY</div>
+  </section>
+
+  <section class="discover section-wrap" id="discover">
+    <div class="section-heading"><div><div class="eyebrow dark-eyebrow">YOUR CITY, YOUR TASTE</div><h2>Where to eat next?</h2><p class="muted">Explore local favourites and find a spot for every mood.</p></div>
+      <div class="sort-wrap"><label for="sortSelect">Sort by</label><select id="sortSelect"><option value="rating">Top rated</option><option value="reviews">Most reviewed</option><option value="name">Name A–Z</option></select></div>
+    </div>
+    <div class="chips" id="cuisineChips">
+      <button class="chip selected" data-cuisine="">All places <span>✦</span></button>
+      <button class="chip" data-cuisine="Pakistani">Pakistani <span>◈</span></button>
+      <button class="chip" data-cuisine="BBQ">BBQ <span>♨</span></button>
+      <button class="chip" data-cuisine="Continental">Continental <span>✧</span></button>
+      <button class="chip" data-cuisine="Burgers">Burgers <span>☰</span></button>
+      <button class="chip" data-cuisine="Cafe">Cafés <span>☕</span></button>
+      <button class="chip" data-cuisine="Street Food">Street food <span>✦</span></button>
+    </div>
+    <div id="status" class="status" role="status"></div>
+    <div id="restaurantGrid" class="restaurant-grid"></div>
+  </section>
+
+  <section class="community" id="how"><div class="community-icon">✳</div><div><div class="eyebrow">GOOD FOOD IS BETTER SHARED</div><h2>Your opinion helps the whole city.</h2><p>Tell Karachi what’s worth ordering, where the service shines, and which places deserve another visit.</p></div><button id="communityReviewBtn" class="btn btn-dark">Write a review <span>↗</span></button></section>
+</main>
+<footer><a class="brand footer-brand" href="/"><span class="brand-mark">K</span><span>Karachi<span class="brand-light">Bites</span></span></a><p>Made for the love of Karachi food. <span>© <span id="year"></span> KarachiBites</span></p></footer>
+
+<div id="modalBackdrop" class="modal-backdrop hidden">
+  <section class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <button id="closeModal" class="modal-close" aria-label="Close">×</button>
+    <div id="modalContent"></div>
+  </section>
+</div>
+<div id="toast" class="toast" role="status"></div>
+<script src="/app.js"></script>
+</body></html>
